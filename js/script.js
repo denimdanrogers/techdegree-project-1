@@ -11,11 +11,11 @@ project 1 - A Random Quote Generator
  * `quotes` array: arrary of objects storing quotes and corresponding data 
 ***/
 let quotes = [
-  {quote: "The journey of a thousand miles begins with one step.", source: "Lao Tzu", citation: "https://www.keepinspiring.me/famous-quotes/", year: "unknown" },
-  {quote: "That which does not kill us makes us stronger", source: "Friedrich Nietzsche", citation: "https://www.keepinspiring.me/famous-quotes/", year: "1888" },
-  {quote: "Life is what happens when you’re busy making other plans.", source: "John Lennon", citation: "https://www.keepinspiring.me/famous-quotes/", year: "1957" },
-  {quote: "When the going gets tough, the tough get going.", source: "Joe Kennedy", citation: "https://www.keepinspiring.me/famous-quotes/", year: "" },
-  {quote: "You must be the change you wish to see in the world.", source: "Mahatma Gandhi", citation: "https://www.keepinspiring.me/famous-quotes/", year: "" }
+  {quote: "The journey of a thousand miles begins with one step.", source: "Lao Tzu", citation: "keepinspiring.me", year: "unknown" },
+  {quote: "That which does not kill us makes us stronger", source: "Friedrich Nietzsche", citation: "keepinspiring.me", year: "1888" },
+  {quote: "Life is what happens when you’re busy making other plans.", source: "John Lennon", citation: "keepinspiring.me", year: "1957" },
+  {quote: "When the going gets tough, the tough get going.", source: "Joe Kennedy", citation: "keepinspiring.me", year: "" },
+  {quote: "You must be the change you wish to see in the world.", source: "Mahatma Gandhi", citation: "keepinspiring.me", year: "" }
 ];
 
 // console.log(quotes);
@@ -37,7 +37,19 @@ function getRandomQuote(arr) {
  * `printQuote` function
 ***/
 
+function printQuote(obj) {
+  let quote = obj.quote;
+  let source = obj.source;
+  let citation = obj.citation;
+  let year = obj.year;
+  let message = 
+    `<p class="quote">${quote}</p>
+    <p class="source">-${source}, <i>${citation}</i>, ${year}</p>`;
+  return message;
+};
 
+let test = printQuote(getRandomQuote(quotes));
+console.log(test);
 
 /***
  * click event listener for the print quote button
