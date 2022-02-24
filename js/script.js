@@ -8,7 +8,8 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array: arrary of objects storing quotes and corresponding data 
+ * `quotes` array: 
+ *    - Arrary of objects storing quotes and corresponding data 
 ***/
 let quotes = [
   {quote: "The journey of a thousand miles begins with one step.", source: "Lao Tzu", citation: "keepinspiring.me", year: "unknown" },
@@ -22,38 +23,54 @@ let quotes = [
 // console.log(quotes.length);
 
 /***
- * `getRandomQuote` function: creates random number based on the quotes array length. Then returns the object selected.
+ * `getRandomQuote` function: 
+ *   - Creates random number based on the quotes array length
+ *   - Returns the object based on index selected by random value
 ***/
-function getRandomQuote(arr) {
-  let quoteIndex = Math.floor(Math.random() * arr.length);
-  let quoteSelectObject = arr[quoteIndex];
-  return quoteSelectObject;
+let quoteObj;
+function getRandomQuote() {
+  let quoteIndex = Math.floor(Math.random() * quotes.length);
+  let quoteSelectObject = quotes[quoteIndex];
+  quoteObj = quoteSelectObject;
 };
 
 //console.log(getRandomQuote(quotes));
 
 
 /***
- * `printQuote` function
+ * `printQuote` function: 
+ *    - Calls the getRandomQuote function
+ *    - Creates vars from the object's key-value pairs
+ *    - Sets conditionals for citation and year
+ *    - builds html structure to be used on the page
+ *    - inserts html output to 'quote-box' class on index.html
 ***/
-
-function printQuote(obj) {
-  let quote = obj.quote;
-  let source = obj.source;
-  let citation = obj.citation;
-  let year = obj.year;
-  let message = 
+let message;
+function printQuote() {
+  getRandomQuote();
+  let quote = quoteObj.quote;
+  let source = quoteObj.source;
+  let citation = quoteObj.citation;
+  let year = quoteObj.year;
+  let sourceLine = source;
+  if (citation) {
+    sourceLine += `<span class="citation"> ${citation}</span>`
+  };
+  if (year) {
+    sourceLine += `<span class="year"> ${year}</span>`
+  }
+  message = 
     `<p class="quote">${quote}</p>
-    <p class="source">-${source}, <i>${citation}</i>, ${year}</p>`;
-  return message;
+    <p class="source">- ${sourceLine}</p>`;
+  document.getElementById('quote-box').innerHTML = message;
 };
 
-let test = printQuote(getRandomQuote(quotes));
-console.log(test);
+//let test = printQuote(getRandomQuote(quotes));
+//console.log(test);
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
