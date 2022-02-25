@@ -12,11 +12,11 @@ project 1 - A Random Quote Generator
  *    - Arrary of objects storing quotes and corresponding data 
 ***/
 let quotes = [
-  {quote: "The journey of a thousand miles begins with one step.", source: "Lao Tzu", citation: "keepinspiring.me", year: "unknown", tag: "inspiration" },
-  {quote: "That which does not kill us makes us stronger", source: "Friedrich Nietzsche", citation: "keepinspiring.me", year: "1888" },
-  {quote: "Life is what happens when you’re busy making other plans.", source: "John Lennon", citation: "keepinspiring.me", year: "1957" },
-  {quote: "When the going gets tough, the tough get going.", source: "Joe Kennedy", citation: "keepinspiring.me", tag: "inspiration" },
-  {quote: "You must be the change you wish to see in the world.", source: "Mahatma Gandhi", citation: "keepinspiring.me", tag: "inspiration" }
+  {quote: "Here's the thing about when 'What's New Pussycat?' plays over and over and over and over and over again... ", source: "John Mulaney"},
+  {quote: "I’m lookin’ at the Pop-Tarts box and I notice they have directions on there. I give up on this species… ", source: "Brian Regan", tag: "favorites"},
+  {quote: "BIKES!!!", source: "Tom Segura", citation: "Mostly Stories", year: "2016", tag: "favorites"},
+  {quote: "When I was 22, I got involed with the Russian Mafia...", source: "Bert Kreischer", citation: "The Machine", year: "2016"},
+  {quote: "Fuck you, Eddie! I know you! I see you on television. You the fuck you man!", source: "Eddie Murphy", citation: "Eddie Murphy Raw", year: "1987"}
 ];
 
 // console.log(quotes);
