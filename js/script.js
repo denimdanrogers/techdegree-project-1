@@ -12,11 +12,11 @@ project 1 - A Random Quote Generator
  *    - Arrary of objects storing quotes and corresponding data 
 ***/
 let quotes = [
-  {quote: "The journey of a thousand miles begins with one step.", source: "Lao Tzu", citation: "keepinspiring.me", year: "unknown" },
+  {quote: "The journey of a thousand miles begins with one step.", source: "Lao Tzu", citation: "keepinspiring.me", year: "unknown", tag: "inspiration" },
   {quote: "That which does not kill us makes us stronger", source: "Friedrich Nietzsche", citation: "keepinspiring.me", year: "1888" },
   {quote: "Life is what happens when you’re busy making other plans.", source: "John Lennon", citation: "keepinspiring.me", year: "1957" },
-  {quote: "When the going gets tough, the tough get going.", source: "Joe Kennedy", citation: "keepinspiring.me", year: "" },
-  {quote: "You must be the change you wish to see in the world.", source: "Mahatma Gandhi", citation: "keepinspiring.me", year: "" }
+  {quote: "When the going gets tough, the tough get going.", source: "Joe Kennedy", citation: "keepinspiring.me", tag: "inspiration" },
+  {quote: "You must be the change you wish to see in the world.", source: "Mahatma Gandhi", citation: "keepinspiring.me", tag: "inspiration" }
 ];
 
 // console.log(quotes);
@@ -37,6 +37,15 @@ function getRandomQuote() {
 //console.log(getRandomQuote(quotes));
 
 
+//extra credit: change background color to random color
+function changeBackground() {
+  function randomColorValue() { return Math.floor(Math.random() *255);};
+  let r = randomColorValue();
+  let g = randomColorValue();
+  let b = randomColorValue();
+  document.body.style.background = `rgb( ${r}, ${g}, ${b})`;
+};
+
 /***
  * `printQuote` function: 
  *    - Calls the getRandomQuote function
@@ -48,20 +57,26 @@ function getRandomQuote() {
 let message;
 function printQuote() {
   getRandomQuote();
+  changeBackground();
   let quote = quoteObj.quote;
   let source = quoteObj.source;
   let citation = quoteObj.citation;
   let year = quoteObj.year;
+  let tag = quoteObj.tag;
   let sourceLine = source;
   if (citation) {
     sourceLine += `<span class="citation"> ${citation}</span>`
   };
   if (year) {
     sourceLine += `<span class="year"> ${year}</span>`
-  }
+  };
+  //extra credit: add tagging to atleast 1 object; Also added css for class="tag".
+  if (tag) {
+    sourceLine += `<span class="tag">${tag}</span>`
+  };
   message = 
     `<p class="quote">${quote}</p>
-    <p class="source">- ${sourceLine}</p>`;
+    <p class="source">${sourceLine}</p>`;
   document.getElementById('quote-box').innerHTML = message;
 };
 
@@ -72,5 +87,8 @@ function printQuote() {
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
+
+//extra credit: use setInterval() method to autorefresh quote
+setInterval(printQuote, 10000);
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);

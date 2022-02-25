@@ -115,6 +115,16 @@ h1 {
   font-style: normal;
 }
 
+.tag {
+  text-decoration: underline;
+}
+
+.tag:before {
+  content: ", ";
+  font-style: normal;
+  text-decoration: none;
+}
+
 @media (min-width: 768px) {
   body {
     padding: 25px;
